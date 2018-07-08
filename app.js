@@ -28,6 +28,9 @@ app.get('/', (req, res) => {
       }
     else {
       console.log(data);
+      data.Items.sort(function(a, b){
+        return b.lastTimeTaken.S - a.lastTimeTaken.S;
+      })
       res.send(data);
       }
   });
