@@ -19,6 +19,6 @@ It is hosted on heroku here: https://medi-etrack-db.herokuapp.com/home/
 
 ## More info:
 
-This repository hosts only the web app. However, to see more of the Ethereum side of the project see here: https://github.com/o216/Med-ETrack
+This repository hosts only the web app. However, to see more of the FitBit and Ethereum side of the project see here: https://github.com/o216/Med-ETrack
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
