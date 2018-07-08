@@ -1,0 +1,65 @@
+.me-logo{
+  display:inline;
+  margin-right:3%;
+  margin-left: 7%;
+}
+
+.me-patient{
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+}
+
+.me-patient-update{
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+}
+
+/* .me-patient-update i{
+  margin-right:20%;
+  background-color: teal;
+  padding:5%;
+  border-radius: 100%;
+  color: white;
+} */
+
+.me-popover-options{
+  margin-top:5%;
+}
+.me-popover-options i{
+  margin-right: 30%;
+}
+
+
+.me-patient-status{
+  display: inline-block;
+  width: 50%;
+
+}
+
+.me-add-dosage{
+  background-color: teal;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+  width:30%;
+  margin: 2% auto;
+}
+
+.me-add-popover{
+  max-width: 500px;
+}
+
+.me-popover-input{
+  width: 40%;
+  display:inline;
+}
+
+.me-cancel{
+
+}
+
+.me-submit{
+
+}
