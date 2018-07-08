@@ -19,6 +19,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.get('/home', (req, res) => {res.sendFile('build/index.html')});
+
 app.get('/', (req, res) => {
   var params = {
     TableName : 'Med-ETrack'
