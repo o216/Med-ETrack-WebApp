@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/home', (req, res) => {res.sendFile(__dirname+'build/index.html')});
+app.get('/home', (req, res) => {res.sendFile(path.join(__dirname, 'build/index.html'))});
 
 app.get('/', (req, res) => {
   var params = {
