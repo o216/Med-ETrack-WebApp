@@ -6,6 +6,7 @@ AWS.config.update({accessKeyId: process.env.ACCESS_ID, secretAccessKey:  process
 var db = new AWS.DynamoDB();
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 4000;
+const path = require('path');
 
 
 app.use(bodyParser.json());
