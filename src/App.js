@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://medi-etrack-db.herokuapp.com/`)
+    axios.get(`/`)
       .then(res => {
         this.setState({ data: res.data.Items });
       })

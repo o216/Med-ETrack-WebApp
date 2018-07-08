@@ -37,7 +37,7 @@ class Record extends Component{
 
   handleCloseAdd() {
     console.log(this.state.inputValue);
-     axios.post(`https://medi-etrack-db.herokuapp.com/`,
+     axios.post(`/`,
        { interactionId: {N: this.props.nextInteractionId.toString()},
          careTakerId: {N: '1'},
          lastTimeTaken: {S: Math.floor(Date.now()/1000).toString()},
@@ -53,7 +53,7 @@ class Record extends Component{
   }
 
   handleCloseEdit() {
-    axios.post(`https://medi-etrack-db.herokuapp.com/`,
+    axios.post(`/`,
       { interactionId: {N: this.props.nextInteractionId.toString()},
         careTakerId: {N: '1'},
         lastTimeTaken: {S: this.props.interaction.lastTimeTaken.S},
