@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import Record from './Record/Record.js';
 import './App.css';
 import axios from 'axios';
@@ -22,7 +21,6 @@ class App extends Component {
     axios.get(`https://medi-etrack-db.herokuapp.com/`)
       .then(res => {
         this.setState({ data: res.data.Items });
-        console.log(res.data.Items);
       })
   }
 
@@ -35,7 +33,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to Med-ETrack</h1>
         </header>
 
-        {this.state.data.map((interaction, i) => <Record interaction={interaction} key={i} />)}
+        {this.state.data
+          .map((interaction, i) =>
+            <Record interaction={interaction} key={i} nextInteractionId={this.state.data.length+1}/>)}
 
       </div>
     );

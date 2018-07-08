@@ -37,29 +37,33 @@ class Record extends Component{
 
   handleCloseAdd() {
     console.log(this.state.inputValue);
-     axios.post(`/fakeEndpoint`,
-       { careTakerId: 1,
-         lastTimeTaken: Math.floor(Date.now()/1000),
-         medicineName: this.state.inputValue,
-         patientId: 1,
-         rate: 3})
+     axios.post(`https://medi-etrack-db.herokuapp.com/`,
+       { interactionId: {N: this.props.nextInteractionId.toString()},
+         careTakerId: {N: '1'},
+         lastTimeTaken: {S: Math.floor(Date.now()/1000).toString()},
+         medicineName: {S: this.state.inputValue.toString()},
+         patientId: {N: '1'},
+         rate: {N: '3'}})
        .then(res => {
          console.log(res);
          console.log(res.data);
+         window.location.reload();
      })
     this.setState({ showAdd: false });
   }
 
   handleCloseEdit() {
-    axios.post(`/fakeEndpoint`,
-      { careTakerId: 1,
-        lastTimeTaken: Math.floor(Date.now()/1000),
-        medicineName: 'Tylenol 500g',
-        patientId: 1,
-        rate: this.state.inputValue})
+    axios.post(`https://medi-etrack-db.herokuapp.com/`,
+      { interactionId: {N: this.props.nextInteractionId.toString()},
+        careTakerId: {N: '1'},
+        lastTimeTaken: {S: this.props.interaction.lastTimeTaken.S},
+        medicineName: {S: this.props.interaction.medicineName.S},
+        patientId: {N: '1'},
+        rate: {N: this.state.inputValue.toString()}})
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
     })
     this.setState({ showEdit: false });
   }
@@ -68,6 +72,12 @@ class Record extends Component{
   render() {
     return (
     <div className="me-patient">
+
+        <h4 className="ui horizontal divider header">
+          <i className="pills icon"></i>
+          {new Date(parseInt(this.props.interaction.lastTimeTaken.S, 10)*1000).toLocaleDateString()
+            +" @ "+new Date(parseInt(this.props.interaction.lastTimeTaken.S, 10)*1000).toLocaleTimeString()}
+        </h4>
 
         <div className="me-patient-update">
 
@@ -82,9 +92,10 @@ class Record extends Component{
 
         <div className="me-patient-status">Patient with patientId:
           <span> {this.props.interaction.patientId.N} </span>
-          last took medication
+          last took medication:
           <span> {this.props.interaction.medicineName.S} </span>
-          at <span> {this.props.interaction.lastTimeTaken.S}. </span>
+          at <span> {new Date(parseInt(this.props.interaction.lastTimeTaken.S, 10)*1000).toLocaleDateString()
+            +" at "+new Date(parseInt(this.props.interaction.lastTimeTaken.S, 10)*1000).toLocaleTimeString()}. </span>
           Current plan is to take <span> {this.props.interaction.medicineName.S} </span>
           every <span> {this.props.interaction.rate.N} </span>hours.
         </div>
